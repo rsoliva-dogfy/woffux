@@ -4,18 +4,26 @@ on:
   schedule:
     - cron: '0 13 * * 5'  # Fri 15:00 (UTC+2)
     - cron: '0 14 * * 5'  # Fri 15:00 (UTC+1)
-    - cron: '0 6 * * 5'  # Fri 08:00 (UTC+2)
-    - cron: '0 7 * * 5'  # Fri 08:00 (UTC+1)
-    - cron: '15 12 * * 1,2,3,4'  # Mon-Tue-Wed-Thu 14:15 (UTC+2)
-    - cron: '15 13 * * 1,2,3,4'  # Mon-Tue-Wed-Thu 14:15 (UTC+1)
-    - cron: '30 11 * * 1,2,3,4'  # Mon-Tue-Wed-Thu 13:30 (UTC+2)
-    - cron: '30 12 * * 1,2,3,4'  # Mon-Tue-Wed-Thu 13:30 (UTC+1)
-    - cron: '30 15 * * 1,2,3,4'  # Mon-Tue-Wed-Thu 17:30 (UTC+2)
-    - cron: '30 16 * * 1,2,3,4'  # Mon-Tue-Wed-Thu 17:30 (UTC+1)
-    - cron: '30 6 * * 1,2,3,4'  # Mon-Tue-Wed-Thu 08:30 (UTC+2)
-    - cron: '30 7 * * 1,2,3,4'  # Mon-Tue-Wed-Thu 08:30 (UTC+1)
-    - cron: '7,22,37,52 7-18 * * 1,2,3,4,5'  # catch-up every 15m (UTC+1)
-    - cron: '7,22,37,52 6-17 * * 1,2,3,4,5'  # catch-up every 15m (UTC+2)
+    - cron: '0 7 * * 5'  # Fri 09:00 (UTC+2)
+    - cron: '0 8 * * 5'  # Fri 09:00 (UTC+1)
+    - cron: '1 7 * * 1,3'  # Mon-Wed 09:01 (UTC+2)
+    - cron: '1 8 * * 1,3'  # Mon-Wed 09:01 (UTC+1)
+    - cron: '19 11 * * 2,4'  # Tue-Thu 13:19 (UTC+2)
+    - cron: '19 12 * * 2,4'  # Tue-Thu 13:19 (UTC+1)
+    - cron: '2 16 * * 1,3'  # Mon-Wed 18:02 (UTC+2)
+    - cron: '2 17 * * 1,3'  # Mon-Wed 18:02 (UTC+1)
+    - cron: '23 11 * * 1,3'  # Mon-Wed 13:23 (UTC+2)
+    - cron: '23 12 * * 1,3'  # Mon-Wed 13:23 (UTC+1)
+    - cron: '40 11 * * 2,4'  # Tue-Thu 13:40 (UTC+2)
+    - cron: '40 12 * * 2,4'  # Tue-Thu 13:40 (UTC+1)
+    - cron: '54 11 * * 1,3'  # Mon-Wed 13:54 (UTC+2)
+    - cron: '54 12 * * 1,3'  # Mon-Wed 13:54 (UTC+1)
+    - cron: '55 6 * * 2,4'  # Tue-Thu 08:55 (UTC+2)
+    - cron: '55 7 * * 2,4'  # Tue-Thu 08:55 (UTC+1)
+    - cron: '59 15 * * 2,4'  # Tue-Thu 17:59 (UTC+2)
+    - cron: '59 16 * * 2,4'  # Tue-Thu 17:59 (UTC+1)
+    - cron: '7,22,37,52 7-19 * * 1,2,3,4,5'  # catch-up every 15m (UTC+1)
+    - cron: '7,22,37,52 6-18 * * 1,2,3,4,5'  # catch-up every 15m (UTC+2)
   workflow_dispatch:
 
 
@@ -41,7 +49,7 @@ jobs:
       - name: Sign
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            ./woffux sign --catch-up '1:08:30:in;1:13:30:out;1:14:15:in;1:17:30:out;2:08:30:in;2:13:30:out;2:14:15:in;2:17:30:out;3:08:30:in;3:13:30:out;3:14:15:in;3:17:30:out;4:08:30:in;4:13:30:out;4:14:15:in;4:17:30:out;5:08:00:in;5:15:00:out' --catch-up-timezone 'Europe/Madrid' --catch-up-window '2h'
+            ./woffux sign --catch-up '1:09:01:in;1:13:23:out;1:13:54:in;1:18:02:out;2:08:55:in;2:13:19:out;2:13:40:in;2:17:59:out;3:09:01:in;3:13:23:out;3:13:54:in;3:18:02:out;4:08:55:in;4:13:19:out;4:13:40:in;4:17:59:out;5:09:00:in;5:15:00:out' --catch-up-timezone 'Europe/Madrid' --catch-up-window '2h'
           else
             ./woffux sign
           fi
