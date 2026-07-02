@@ -2,28 +2,40 @@ name: Auto Sign
 
 on:
   schedule:
-    - cron: '0 13 * * 5'  # Fri 15:00 (UTC+2)
-    - cron: '0 14 * * 5'  # Fri 15:00 (UTC+1)
-    - cron: '0 7 * * 5'  # Fri 09:00 (UTC+2)
-    - cron: '0 8 * * 5'  # Fri 09:00 (UTC+1)
-    - cron: '1 7 * * 1,3'  # Mon-Wed 09:01 (UTC+2)
-    - cron: '1 8 * * 1,3'  # Mon-Wed 09:01 (UTC+1)
-    - cron: '19 11 * * 2,4'  # Tue-Thu 13:19 (UTC+2)
-    - cron: '19 12 * * 2,4'  # Tue-Thu 13:19 (UTC+1)
-    - cron: '2 16 * * 1,3'  # Mon-Wed 18:02 (UTC+2)
-    - cron: '2 17 * * 1,3'  # Mon-Wed 18:02 (UTC+1)
-    - cron: '23 11 * * 1,3'  # Mon-Wed 13:23 (UTC+2)
-    - cron: '23 12 * * 1,3'  # Mon-Wed 13:23 (UTC+1)
-    - cron: '40 11 * * 2,4'  # Tue-Thu 13:40 (UTC+2)
-    - cron: '40 12 * * 2,4'  # Tue-Thu 13:40 (UTC+1)
-    - cron: '54 11 * * 1,3'  # Mon-Wed 13:54 (UTC+2)
-    - cron: '54 12 * * 1,3'  # Mon-Wed 13:54 (UTC+1)
-    - cron: '55 6 * * 2,4'  # Tue-Thu 08:55 (UTC+2)
-    - cron: '55 7 * * 2,4'  # Tue-Thu 08:55 (UTC+1)
-    - cron: '59 15 * * 2,4'  # Tue-Thu 17:59 (UTC+2)
-    - cron: '59 16 * * 2,4'  # Tue-Thu 17:59 (UTC+1)
-    - cron: '7,22,37,52 7-19 * * 1,2,3,4,5'  # catch-up every 15m (UTC+1)
-    - cron: '7,22,37,52 6-18 * * 1,2,3,4,5'  # catch-up every 15m (UTC+2)
+    - cron: '16 11 * * 1,2'  # Mon-Tue 13:16 (UTC+2)
+    - cron: '16 12 * * 1,2'  # Mon-Tue 13:16 (UTC+1)
+    - cron: '16 6 * * 5'  # Fri 08:16 (UTC+2)
+    - cron: '16 7 * * 5'  # Fri 08:16 (UTC+1)
+    - cron: '2 11 * * 3'  # Wed 13:02 (UTC+2)
+    - cron: '2 12 * * 3'  # Wed 13:02 (UTC+1)
+    - cron: '21 6 * * 3'  # Wed 08:21 (UTC+2)
+    - cron: '21 7 * * 3'  # Wed 08:21 (UTC+1)
+    - cron: '23 12 * * 4'  # Thu 14:23 (UTC+2)
+    - cron: '23 12 * * 5'  # Fri 14:23 (UTC+2)
+    - cron: '23 13 * * 4'  # Thu 14:23 (UTC+1)
+    - cron: '23 13 * * 5'  # Fri 14:23 (UTC+1)
+    - cron: '28 15 * * 1,3'  # Mon-Wed 17:28 (UTC+2)
+    - cron: '28 16 * * 1,3'  # Mon-Wed 17:28 (UTC+1)
+    - cron: '32 6 * * 1'  # Mon 08:32 (UTC+2)
+    - cron: '32 7 * * 1'  # Mon 08:32 (UTC+1)
+    - cron: '34 11 * * 3'  # Wed 13:34 (UTC+2)
+    - cron: '34 12 * * 3'  # Wed 13:34 (UTC+1)
+    - cron: '39 15 * * 2'  # Tue 17:39 (UTC+2)
+    - cron: '39 16 * * 2'  # Tue 17:39 (UTC+1)
+    - cron: '42 11 * * 1'  # Mon 13:42 (UTC+2)
+    - cron: '42 12 * * 1'  # Mon 13:42 (UTC+1)
+    - cron: '42 6 * * 2'  # Tue 08:42 (UTC+2)
+    - cron: '42 7 * * 2'  # Tue 08:42 (UTC+1)
+    - cron: '46 15 * * 4'  # Thu 17:46 (UTC+2)
+    - cron: '46 16 * * 4'  # Thu 17:46 (UTC+1)
+    - cron: '48 6 * * 4'  # Thu 08:48 (UTC+2)
+    - cron: '48 7 * * 4'  # Thu 08:48 (UTC+1)
+    - cron: '51 11 * * 2'  # Tue 13:51 (UTC+2)
+    - cron: '51 12 * * 2'  # Tue 13:51 (UTC+1)
+    - cron: '52 11 * * 4'  # Thu 13:52 (UTC+2)
+    - cron: '52 12 * * 4'  # Thu 13:52 (UTC+1)
+    - cron: '7,22,37,52 7-18 * * 1,2,3,4,5'  # catch-up every 15m (UTC+1)
+    - cron: '7,22,37,52 6-17 * * 1,2,3,4,5'  # catch-up every 15m (UTC+2)
   workflow_dispatch:
 
 
@@ -49,7 +61,7 @@ jobs:
       - name: Sign
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            ./woffux sign --catch-up '1:09:01:in;1:13:23:out;1:13:54:in;1:18:02:out;2:08:55:in;2:13:19:out;2:13:40:in;2:17:59:out;3:09:01:in;3:13:23:out;3:13:54:in;3:18:02:out;4:08:55:in;4:13:19:out;4:13:40:in;4:17:59:out;5:09:00:in;5:15:00:out' --catch-up-timezone 'Europe/Madrid' --catch-up-window '2h'
+            ./woffux sign --catch-up '1:08:32:in;1:13:16:out;1:13:42:in;1:17:28:out;2:08:42:in;2:13:16:out;2:13:51:in;2:17:39:out;3:08:21:in;3:13:02:out;3:13:34:in;3:17:28:out;4:08:48:in;4:13:52:out;4:14:23:in;4:17:46:out;5:08:16:in;5:14:23:out' --catch-up-timezone 'Europe/Madrid' --catch-up-window '2h'
           else
             ./woffux sign
           fi
